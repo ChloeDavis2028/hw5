@@ -676,3 +676,13 @@ The next debrief measures whether they worked: the target is 0 redundant Custome
 - a Planner (needs the owner's calendar dates);
 - fewer hand-offs on simple tickets (it would change the graded Problem 6 plan).
 
+## 17. Problem 11: public GitHub repo (my words: "push the code to a public github repo so graders can clone")
+
+- **Repo:** https://github.com/ChloeDavis2028/hw5 (public), also saved in `output/github_url.txt`.
+- **Added:** `README.md`, which explains the DB copy, starting the MCP server, FastAPI and the React board, and the reset before a full run. Also `.env.example`, with a fake key.
+- **Included:** both `data/campus_customs.db` (original) and `data/campus_customs_new.db` (working copy, checking $160).
+- **Kept out by `.gitignore`:** `.env`, `data/approvers.json`, `data/.session_secret`, `output/test_accounts.md`, `.venv/`, `node_modules/`.
+- **Checked before and after the push:**
+  - before: my real key in 0 files, test passwords in 0 files;
+  - after: a fresh clone had every file in the expected layout, and its original DB is byte-identical.
+

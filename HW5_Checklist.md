@@ -1,6 +1,6 @@
 # HW5 Checklist: Shop Agent Team
 
-_Last updated: 2026-11-07 (Problems 1–10 done, plus the better-product pass; reflection and "what was lacking" lines written; Problem 11 waits for my go)_
+_Last updated: 2026-11-07 (Problems 1–10 done, plus the better-product pass; reflection and "what was lacking" lines written; Problem 11 pushed to https://github.com/ChloeDavis2028/hw5)_
 
 ## Status update (from the AI agent's side)
 
@@ -26,7 +26,7 @@ All 3 tickets are resolved. Cash went $3,400 → $160 through two signed-off pay
 | 8. Agent dashboard | Done | `frontend/` at :5173, warm blue/grey boutique look with aviation touches (harness §14, `output/design.md`) |
 | 9. Final run evidence | Done | Reset → ran 101/102/103 → approved → **$160 matches `cash_accounts`**. Actual sections, Cash tab, `output/resolved_tickets.json`, `output/resolved_board.html` |
 | 10. Reflection | Done (reflection drafted from my run; reread it) | Flight Instructor learning agent; `output/learning_report.html`; Debrief panel; Reflection tab; `output/new_problems.md` |
-| 11. Public GitHub repo | **Waiting for my go** (I said "wait until i say so") | Nothing pushed yet. See Problem 11 below. |
+| 11. Public GitHub repo | Done (I submit on Canvas) | **https://github.com/ChloeDavis2028/hw5** (public), also in `output/github_url.txt` |
 | Better product pass | Done | Approver sign-in, rejections block approval, rules checked in code, saved replies, AI spend, whole-board button, smarter debrief (harness §16) |
 
 Study guides: `HW5_Problem7_Study_Guide.md` and `HW5_Problems8-10_Study_Guide.md`.
@@ -57,7 +57,8 @@ Study guides: `HW5_Problem7_Study_Guide.md` and `HW5_Problems8-10_Study_Guide.md
 
 - [x] **My reflection** in the Reflection tab (I asked "Yes, draft it"). I'll reread it and edit any line that doesn't sound like me, in `scripts/build_reflection.py`, then rebuild.
 - [x] All 10 "what was lacking" lines in `AI_prompts.md`, each with a **Stronger prompt** (I asked "fix and execute")
-- [ ] Say **go** on Problem 11, then submit the repo URL on Canvas myself
+- [x] Problem 11 pushed: https://github.com/ChloeDavis2028/hw5
+- [ ] Submit the repo URL on Canvas myself
 - [ ] Set the **AI budget** (placeholder $5.00 a month, via the `AI_MONTHLY_BUDGET` setting)
 - [ ] Set prices and perks for The Crest Society, Seasonal Editions and The Atelier
 - [ ] Confirm rules 11–24 (my "fix and recommend" approvals): 15% military, $500 cushion, 50% deposit, two approvers over $1,000
@@ -279,17 +280,19 @@ Both were checked running in Terminal tabs "HW5 backend 8000" and "HW5 board 517
 - [x] **My reflection** drafted from my run (I asked "Yes, draft it"): what I learned, what I'd do differently, what surprised me. Each cites a ticket or the Cash tab. Reread it and change anything that doesn't sound like me.
 - [ ] Run a ticket again so the Flight Instructor can check whether the Customer Service fixes worked (target: 0 repeat lookups)
 
-### Problem 11: Public GitHub repo (DO NOT START until I say so)
+### Problem 11: Public GitHub repo
 
 My words: "push the code to a public github repo so graders can clone. submit the repo url to canvas and also put it in output/github_url.txt do notpush your real .env… do include both database files under data/".
 
-- [ ] Wait for my go
-- [ ] Match the expected layout: `AI_prompts.md`, `requirements.txt`, `.env.example`, `.gitignore`, `.mcp.json`, `README.md`, `data/` (both DBs), `mcp_server/`, `frontend/`, `backend/` (main.py, models.py, prompts/), `output/` (harness.md, mcp_smoke.json, desk_tickets.html, design.md, resolved_tickets.json, resolved_board.html, audit_trail.json, github_url.txt)
-- [ ] README explains: copy the original DB to the working copy for a clean run, start the MCP server, start FastAPI, start the React board, reset before a full three-ticket run
-- [ ] **Never push** `.env`, `data/approvers.json`, `data/.session_secret`, `output/test_accounts.md`; push only `.env.example` (no real key)
-- [ ] Push both `data/campus_customs.db` and `data/campus_customs_new.db`
-- [ ] Save the URL in `output/github_url.txt`, then **I** submit it on Canvas
-- [ ] Check: clone into a fresh folder and confirm the files are there and no secrets
+- [x] My go: "and go for last problem"
+- [x] Match the expected layout: `AI_prompts.md`, `requirements.txt`, `.env.example`, `.gitignore`, `.mcp.json`, `README.md`, `data/` (both DBs), `mcp_server/`, `frontend/`, `backend/` (main.py, models.py, prompts/), `output/` (harness.md, mcp_smoke.json, desk_tickets.html, design.md, resolved_tickets.json, resolved_board.html, audit_trail.json, github_url.txt)
+- [x] `README.md` explains: copy the original DB to the working copy for a clean run, start the MCP server, start FastAPI, start the React board, reset before a full three-ticket run
+- [x] **Never push** `.env`, `data/approvers.json`, `data/.session_secret`, `output/test_accounts.md`; push only `.env.example` (no real key). Scanned before pushing: no secret files, my real key in 0 files, test passwords in 0 files.
+- [x] Push both `data/campus_customs.db` and `data/campus_customs_new.db`
+- [x] Save the URL in `output/github_url.txt`
+- [ ] **I** submit https://github.com/ChloeDavis2028/hw5 on Canvas
+- [x] Check: fresh clone has every file in the layout, the original DB is identical, the working copy shows checking $160, and the repo is PUBLIC
+- [ ] After any later change: `git add -A`, `git commit -m "..."`, `git push`
 
 ### Better product pass (my words: "give me an update on how to provide a better product", then "all of them")
 
