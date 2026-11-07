@@ -1,0 +1,669 @@
+{
+  "test": "MCP smoke test: each Campus Customs tool called over MCP",
+  "run_at_utc": "2026-11-07T10:42:02+00:00",
+  "how": "Server launched over stdio from .mcp.json; each prompt was answered by calling the named tool through an MCP client; every output value was compared with the same value read directly from data/campus_customs_new.db.",
+  "database": "data/campus_customs_new.db",
+  "server_name": "campus-customs",
+  "mcp_config": {
+    "mcpServers": {
+      "campus-customs": {
+        "type": "stdio",
+        "command": ".venv/Scripts/python.exe",
+        "args": [
+          "mcp_server/server.py"
+        ],
+        "env": {}
+      }
+    }
+  },
+  "tools_listed": [
+    "check_stock",
+    "get_invoice",
+    "get_lease"
+  ],
+  "shop_today": "2026-08-31",
+  "calls": [
+    {
+      "prompt": "Ticket 103: the Yale AI Club wants 20 navy hoodies (CC-HOOD-NAVY) in size M at a bulk discount. How many size-M hoodies are on the shelf, and what are the unit cost, list price and margin per unit?",
+      "tool": "check_stock",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY",
+        "size": "M"
+      },
+      "output": {
+        "found": true,
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "M",
+        "qty": 8,
+        "location": "Aisle A",
+        "pricing": {
+          "unit_cost": 22.0,
+          "list_price": 58.0,
+          "margin_per_unit": 36.0,
+          "margin_pct_of_list": 62.1
+        }
+      },
+      "ticket": 103,
+      "why": "Yale AI Club wants 20 size-M hoodies at a discount: need stock and margin.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "check": "qty on shelf",
+          "expected": 8,
+          "actual": 8,
+          "pass": true
+        },
+        {
+          "check": "unit_cost",
+          "expected": 22.0,
+          "actual": 22.0,
+          "pass": true
+        },
+        {
+          "check": "list_price",
+          "expected": 58.0,
+          "actual": 58.0,
+          "pass": true
+        },
+        {
+          "check": "margin_per_unit",
+          "expected": 36.0,
+          "actual": 36.0,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    },
+    {
+      "prompt": "Ticket 101: Tauhid Zaman ordered 1 Classic Bulldog Tee (CC-TEE-WHITE) in size S. How many size-S tees are on the shelf?",
+      "tool": "check_stock",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "output": {
+        "found": true,
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 0,
+        "location": "Aisle B",
+        "pricing": {
+          "unit_cost": 8.0,
+          "list_price": 28.0,
+          "margin_per_unit": 20.0,
+          "margin_pct_of_list": 71.4
+        }
+      },
+      "ticket": 101,
+      "why": "Tauhid's size-S tee: confirm the shelf is empty.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "check": "qty on shelf",
+          "expected": 0,
+          "actual": 0,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    },
+    {
+      "prompt": "Ticket 101 links to invoice 501. Is it open or overdue as of the shop's date, which vendor is it for, what is that vendor's lead time, can the vendor ship right now, and how much cash does the shop have?",
+      "tool": "get_invoice",
+      "arguments": {
+        "invoice_id": 501
+      },
+      "output": {
+        "found": true,
+        "shop_today": "2026-08-31",
+        "invoice": {
+          "id": 501,
+          "vendor_id": 1,
+          "amount": 840.0,
+          "due_date": "2026-08-28",
+          "status": "open",
+          "description": "Rush reprint CC-TEE-WHITE S"
+        },
+        "is_open": true,
+        "days_overdue": 3,
+        "is_overdue": true,
+        "vendor": {
+          "id": 1,
+          "name": "Bulldog Print Co",
+          "specialty": "apparel reprint",
+          "lead_days": 5
+        },
+        "vendor_open_invoices": [
+          {
+            "id": 501,
+            "amount": 840.0,
+            "due_date": "2026-08-28"
+          }
+        ],
+        "vendor_can_ship": false,
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "date": "2026-08-31"
+          }
+        ]
+      },
+      "ticket": 101,
+      "why": "The tee ticket links to invoice 501; an open invoice blocks the vendor.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "check": "shop_today from desk",
+          "expected": "2026-08-31",
+          "actual": "2026-08-31",
+          "pass": true
+        },
+        {
+          "check": "amount",
+          "expected": 840.0,
+          "actual": 840.0,
+          "pass": true
+        },
+        {
+          "check": "status",
+          "expected": "open",
+          "actual": "open",
+          "pass": true
+        },
+        {
+          "check": "days_overdue",
+          "expected": 3,
+          "actual": 3,
+          "pass": true
+        },
+        {
+          "check": "vendor name",
+          "expected": "Bulldog Print Co",
+          "actual": "Bulldog Print Co",
+          "pass": true
+        },
+        {
+          "check": "vendor lead_days",
+          "expected": 5,
+          "actual": 5,
+          "pass": true
+        },
+        {
+          "check": "vendor_can_ship",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "check": "cash balance",
+          "expected": 3400.0,
+          "actual": 3400.0,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    },
+    {
+      "prompt": "Ticket 102: Elm City Properties says rent is due. Ticket 102 links to lease 1. How much is the rent, when is it due, how many days away is that from the shop's date, and how much cash does the shop have?",
+      "tool": "get_lease",
+      "arguments": {
+        "lease_id": 1
+      },
+      "output": {
+        "found": true,
+        "shop_today": "2026-08-31",
+        "lease": {
+          "id": 1,
+          "space_name": "Chapel Street shop",
+          "landlord": "Elm City Properties",
+          "monthly_rent": 2400.0,
+          "next_due": "2026-09-02",
+          "notes": null
+        },
+        "days_until_due": 2,
+        "is_overdue": false,
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "date": "2026-08-31"
+          }
+        ]
+      },
+      "ticket": 102,
+      "why": "Elm City Properties rent notice links to lease 1.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        },
+        {
+          "check": "monthly_rent",
+          "expected": 2400.0,
+          "actual": 2400.0,
+          "pass": true
+        },
+        {
+          "check": "next_due",
+          "expected": "2026-09-02",
+          "actual": "2026-09-02",
+          "pass": true
+        },
+        {
+          "check": "days_until_due",
+          "expected": 2,
+          "actual": 2,
+          "pass": true
+        },
+        {
+          "check": "is_overdue",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        },
+        {
+          "check": "cash balance",
+          "expected": 3400.0,
+          "actual": 3400.0,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    },
+    {
+      "prompt": "How many navy hoodies (CC-HOOD-NAVY) in size XXL are on the shelf?",
+      "tool": "check_stock",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY",
+        "size": "XXL"
+      },
+      "output": {
+        "found": false,
+        "message": "No inventory row for sku='CC-HOOD-NAVY', size='XXL'.",
+        "sizes_on_file_for_sku": [
+          "L",
+          "M",
+          "S",
+          "XL"
+        ]
+      },
+      "ticket": null,
+      "why": "No-invented-data check: a size that does not exist.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    },
+    {
+      "prompt": "Look up invoice 999.",
+      "tool": "get_invoice",
+      "arguments": {
+        "invoice_id": 999
+      },
+      "output": {
+        "found": false,
+        "message": "No invoice with id=999."
+      },
+      "ticket": null,
+      "why": "No-invented-data check: an invoice that does not exist.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    },
+    {
+      "prompt": "Look up lease 99.",
+      "tool": "get_lease",
+      "arguments": {
+        "lease_id": 99
+      },
+      "output": {
+        "found": false,
+        "message": "No lease with id=99."
+      },
+      "ticket": null,
+      "why": "No-invented-data check: a lease that does not exist.",
+      "database_checks": [
+        {
+          "check": "found",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "matches_database": true,
+      "pass": true
+    }
+  ],
+  "database_sha256_before": {
+    "campus_customs_new.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a"
+  },
+  "database_sha256_after": {
+    "campus_customs_new.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a"
+  },
+  "database_unchanged": true,
+  "summary": {
+    "calls": 7,
+    "passed": 7,
+    "all_three_tools_called": true,
+    "all_pass": true
+  },
+  "vibe_coder_calls": [
+    {
+      "ticket": 103,
+      "prompt": "Ticket 103: the Yale AI Club wants 20 navy hoodies (CC-HOOD-NAVY) in size M at a bulk discount. How many size-M hoodies are on the shelf, and what are the unit cost, list price and margin per unit?",
+      "tool": "mcp__campus-customs__check_stock",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY",
+        "size": "M"
+      },
+      "output": {
+        "found": true,
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "M",
+        "qty": 8,
+        "location": "Aisle A",
+        "pricing": {
+          "unit_cost": 22,
+          "list_price": 58,
+          "margin_per_unit": 36,
+          "margin_pct_of_list": 62.1
+        }
+      },
+      "database_checks": [
+        {
+          "check": "qty on shelf",
+          "tool_value": 8,
+          "database_value": 8,
+          "match": true
+        },
+        {
+          "check": "unit_cost",
+          "tool_value": 22,
+          "database_value": 22.0,
+          "match": true
+        },
+        {
+          "check": "list_price",
+          "tool_value": 58,
+          "database_value": 58.0,
+          "match": true
+        },
+        {
+          "check": "margin_per_unit (list - cost)",
+          "tool_value": 36,
+          "database_value": 36.0,
+          "match": true
+        }
+      ],
+      "matches_database": true
+    },
+    {
+      "ticket": 101,
+      "prompt": "Ticket 101: Tauhid Zaman ordered 1 Classic Bulldog Tee (CC-TEE-WHITE) in size S. How many size-S tees are on the shelf?",
+      "tool": "mcp__campus-customs__check_stock",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "output": {
+        "found": true,
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 0,
+        "location": "Aisle B",
+        "pricing": {
+          "unit_cost": 8,
+          "list_price": 28,
+          "margin_per_unit": 20,
+          "margin_pct_of_list": 71.4
+        }
+      },
+      "database_checks": [
+        {
+          "check": "qty on shelf",
+          "tool_value": 0,
+          "database_value": 0,
+          "match": true
+        },
+        {
+          "check": "unit_cost",
+          "tool_value": 8,
+          "database_value": 8.0,
+          "match": true
+        },
+        {
+          "check": "list_price",
+          "tool_value": 28,
+          "database_value": 28.0,
+          "match": true
+        },
+        {
+          "check": "margin_per_unit (list - cost)",
+          "tool_value": 20,
+          "database_value": 20.0,
+          "match": true
+        }
+      ],
+      "matches_database": true
+    },
+    {
+      "ticket": 101,
+      "prompt": "Ticket 101 links to invoice 501. Is it open or overdue as of the shop's date, which vendor is it for, what is that vendor's lead time, can the vendor ship right now, and how much cash does the shop have?",
+      "tool": "mcp__campus-customs__get_invoice",
+      "arguments": {
+        "invoice_id": 501
+      },
+      "output": {
+        "found": true,
+        "shop_today": "2026-08-31",
+        "invoice": {
+          "id": 501,
+          "vendor_id": 1,
+          "amount": 840,
+          "due_date": "2026-08-28",
+          "status": "open",
+          "description": "Rush reprint CC-TEE-WHITE S"
+        },
+        "is_open": true,
+        "days_overdue": 3,
+        "is_overdue": true,
+        "vendor": {
+          "id": 1,
+          "name": "Bulldog Print Co",
+          "specialty": "apparel reprint",
+          "lead_days": 5
+        },
+        "vendor_open_invoices": [
+          {
+            "id": 501,
+            "amount": 840,
+            "due_date": "2026-08-28"
+          }
+        ],
+        "vendor_can_ship": false,
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400,
+            "date": "2026-08-31"
+          }
+        ]
+      },
+      "database_checks": [
+        {
+          "check": "shop_today (desk.date_today)",
+          "tool_value": "2026-08-31",
+          "database_value": "2026-08-31",
+          "match": true
+        },
+        {
+          "check": "amount",
+          "tool_value": 840,
+          "database_value": 840.0,
+          "match": true
+        },
+        {
+          "check": "due_date",
+          "tool_value": "2026-08-28",
+          "database_value": "2026-08-28",
+          "match": true
+        },
+        {
+          "check": "status",
+          "tool_value": "open",
+          "database_value": "open",
+          "match": true
+        },
+        {
+          "check": "days_overdue",
+          "tool_value": 3,
+          "database_value": 3,
+          "match": true
+        },
+        {
+          "check": "vendor name",
+          "tool_value": "Bulldog Print Co",
+          "database_value": "Bulldog Print Co",
+          "match": true
+        },
+        {
+          "check": "vendor lead_days",
+          "tool_value": 5,
+          "database_value": 5,
+          "match": true
+        },
+        {
+          "check": "vendor_can_ship (no open invoices)",
+          "tool_value": false,
+          "database_value": false,
+          "match": true
+        },
+        {
+          "check": "cash balance (checking)",
+          "tool_value": 3400,
+          "database_value": 3400.0,
+          "match": true
+        }
+      ],
+      "matches_database": true
+    },
+    {
+      "ticket": 102,
+      "prompt": "Ticket 102: Elm City Properties says rent is due. Ticket 102 links to lease 1. How much is the rent, when is it due, how many days away is that from the shop's date, and how much cash does the shop have?",
+      "tool": "mcp__campus-customs__get_lease",
+      "arguments": {
+        "lease_id": 1
+      },
+      "output": {
+        "found": true,
+        "shop_today": "2026-08-31",
+        "lease": {
+          "id": 1,
+          "space_name": "Chapel Street shop",
+          "landlord": "Elm City Properties",
+          "monthly_rent": 2400,
+          "next_due": "2026-09-02",
+          "notes": null
+        },
+        "days_until_due": 2,
+        "is_overdue": false,
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400,
+            "date": "2026-08-31"
+          }
+        ]
+      },
+      "database_checks": [
+        {
+          "check": "monthly_rent",
+          "tool_value": 2400,
+          "database_value": 2400.0,
+          "match": true
+        },
+        {
+          "check": "next_due",
+          "tool_value": "2026-09-02",
+          "database_value": "2026-09-02",
+          "match": true
+        },
+        {
+          "check": "days_until_due",
+          "tool_value": 2,
+          "database_value": 2,
+          "match": true
+        },
+        {
+          "check": "is_overdue",
+          "tool_value": false,
+          "database_value": false,
+          "match": true
+        },
+        {
+          "check": "cash balance (checking)",
+          "tool_value": 3400,
+          "database_value": 3400.0,
+          "match": true
+        }
+      ],
+      "matches_database": true
+    }
+  ],
+  "vibe_coder_run": {
+    "run_at_utc": "2026-11-07T10:54:08+00:00",
+    "how": "A Claude Code session opened in My Work loaded campus-customs from .mcp.json and called each tool natively (no script). Each output was then compared with values read from data/campus_customs_new.db opened read-only (?mode=ro).",
+    "database_sha256_before": {
+      "campus_customs_new.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+      "campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a"
+    },
+    "database_sha256_after": {
+      "campus_customs_new.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+      "campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a"
+    },
+    "database_unchanged": true,
+    "calls": 4,
+    "all_match": true
+  }
+}

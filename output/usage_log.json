@@ -1,0 +1,422 @@
+[
+  {
+    "at_utc": "2026-11-07T12:14:31.481+00:00",
+    "run_id": "1250db65e111",
+    "kind": "ticket",
+    "ticket_id": 102,
+    "outcome": "stopped: Exceeded the total_tokens_limit of 3000 (total_tokens=5989). Consider raising the limit, or see the docs on usage limits for budget-aware patterns: https://pydantic.dev/docs/ai/core-concepts/agent/#usage-limits",
+    "token_limit": 3000,
+    "requests": 2,
+    "input_tokens": 5844,
+    "cached_input_tokens": 2733,
+    "output_tokens": 145,
+    "total_tokens": 5989,
+    "cost_usd": 0.000482,
+    "cost_parts_usd": {
+      "input": 2.5e-05,
+      "cached_input": 2.7e-05,
+      "cache_write": 0.000357,
+      "output": 7.3e-05
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T12:15:17.686+00:00",
+    "run_id": "4fff46f2e72b",
+    "kind": "ticket",
+    "ticket_id": 102,
+    "outcome": "needs_approval",
+    "token_limit": 120000,
+    "requests": 10,
+    "input_tokens": 29513,
+    "cached_input_tokens": 16957,
+    "output_tokens": 1891,
+    "total_tokens": 31404,
+    "cost_usd": 0.002653,
+    "cost_parts_usd": {
+      "input": 0.000126,
+      "cached_input": 0.00017,
+      "cache_write": 0.001412,
+      "output": 0.000946
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T12:16:58.172+00:00",
+    "run_id": "ae14d5ba6866",
+    "kind": "board",
+    "ticket_id": null,
+    "outcome": "checks passed",
+    "token_limit": 300000,
+    "requests": 27,
+    "input_tokens": 91305,
+    "cached_input_tokens": 71648,
+    "output_tokens": 13814,
+    "total_tokens": 105119,
+    "cost_usd": 0.009996,
+    "cost_parts_usd": {
+      "input": 0.00034,
+      "cached_input": 0.000716,
+      "cache_write": 0.002032,
+      "output": 0.006907
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T12:17:43.918+00:00",
+    "run_id": "e87bd3d6ab02",
+    "kind": "ticket",
+    "ticket_id": 901,
+    "outcome": "resolved",
+    "token_limit": 120000,
+    "requests": 10,
+    "input_tokens": 29686,
+    "cached_input_tokens": 26124,
+    "output_tokens": 2374,
+    "total_tokens": 32060,
+    "cost_usd": 0.001862,
+    "cost_parts_usd": {
+      "input": 0.000126,
+      "cached_input": 0.000261,
+      "cache_write": 0.000288,
+      "output": 0.001187
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T12:20:15.336+00:00",
+    "run_id": "508b34f446c8",
+    "kind": "ticket",
+    "ticket_id": 901,
+    "outcome": "needs_review",
+    "token_limit": 120000,
+    "requests": 5,
+    "input_tokens": 15523,
+    "cached_input_tokens": 8688,
+    "output_tokens": 809,
+    "total_tokens": 16332,
+    "cost_usd": 0.00133,
+    "cost_parts_usd": {
+      "input": 6.3e-05,
+      "cached_input": 8.7e-05,
+      "cache_write": 0.000776,
+      "output": 0.000405
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T12:22:08.363+00:00",
+    "run_id": "37cffacacf58",
+    "kind": "ticket",
+    "ticket_id": 103,
+    "outcome": "blocked",
+    "token_limit": 120000,
+    "requests": 14,
+    "input_tokens": 49151,
+    "cached_input_tokens": 36399,
+    "output_tokens": 11398,
+    "total_tokens": 60549,
+    "cost_usd": 0.007613,
+    "cost_parts_usd": {
+      "input": 0.000176,
+      "cached_input": 0.000364,
+      "cache_write": 0.001373,
+      "output": 0.005699
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T12:22:41.254+00:00",
+    "run_id": "116a6fef2cd6",
+    "kind": "ticket",
+    "ticket_id": 901,
+    "outcome": "needs_review",
+    "token_limit": 120000,
+    "requests": 5,
+    "input_tokens": 15523,
+    "cached_input_tokens": 8688,
+    "output_tokens": 809,
+    "total_tokens": 16332,
+    "cost_usd": 0.00133,
+    "cost_parts_usd": {
+      "input": 6.3e-05,
+      "cached_input": 8.7e-05,
+      "cache_write": 0.000776,
+      "output": 0.000405
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T13:11:55.206+00:00",
+    "run_id": "7da6e4e771d8",
+    "kind": "ticket",
+    "ticket_id": 102,
+    "outcome": "needs_approval",
+    "token_limit": 120000,
+    "requests": 11,
+    "input_tokens": 34329,
+    "cached_input_tokens": 20860,
+    "output_tokens": 2035,
+    "total_tokens": 36364,
+    "cost_usd": 0.002875,
+    "cost_parts_usd": {
+      "input": 0.000139,
+      "cached_input": 0.000209,
+      "cache_write": 0.00151,
+      "output": 0.001017
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T14:25:50.195+00:00",
+    "run_id": "74ab9b9010f4",
+    "kind": "ticket",
+    "ticket_id": 101,
+    "outcome": "needs_approval",
+    "token_limit": 120000,
+    "requests": 12,
+    "input_tokens": 40829,
+    "cached_input_tokens": 25229,
+    "output_tokens": 5682,
+    "total_tokens": 46511,
+    "cost_usd": 0.005005,
+    "cost_parts_usd": {
+      "input": 0.000151,
+      "cached_input": 0.000252,
+      "cache_write": 0.001761,
+      "output": 0.002841
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T14:58:48.568+00:00",
+    "run_id": "2150ffc8bd10",
+    "kind": "ticket",
+    "ticket_id": 103,
+    "outcome": "waiting",
+    "token_limit": 120000,
+    "requests": 12,
+    "input_tokens": 45482,
+    "cached_input_tokens": 27694,
+    "output_tokens": 6353,
+    "total_tokens": 51835,
+    "cost_usd": 0.005639,
+    "cost_parts_usd": {
+      "input": 0.000151,
+      "cached_input": 0.000277,
+      "cache_write": 0.002034,
+      "output": 0.003177
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T14:59:35.266+00:00",
+    "run_id": "90a312cca400",
+    "kind": "ticket",
+    "ticket_id": 103,
+    "outcome": "waiting",
+    "token_limit": 120000,
+    "requests": 12,
+    "input_tokens": 45501,
+    "cached_input_tokens": 27745,
+    "output_tokens": 6735,
+    "total_tokens": 52236,
+    "cost_usd": 0.005827,
+    "cost_parts_usd": {
+      "input": 0.000151,
+      "cached_input": 0.000277,
+      "cache_write": 0.002031,
+      "output": 0.003367
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:00:27.512+00:00",
+    "run_id": "e492e6d18408",
+    "kind": "ticket",
+    "ticket_id": 902,
+    "outcome": "resolved",
+    "token_limit": 120000,
+    "requests": 8,
+    "input_tokens": 27895,
+    "cached_input_tokens": 25427,
+    "output_tokens": 1915,
+    "total_tokens": 29810,
+    "cost_usd": 0.001495,
+    "cost_parts_usd": {
+      "input": 0.000101,
+      "cached_input": 0.000254,
+      "cache_write": 0.000182,
+      "output": 0.000958
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:08:05.033+00:00",
+    "run_id": "2272b976f0c5",
+    "kind": "ticket",
+    "ticket_id": 103,
+    "outcome": "waiting",
+    "token_limit": 120000,
+    "requests": 13,
+    "input_tokens": 56454,
+    "cached_input_tokens": 36001,
+    "output_tokens": 7287,
+    "total_tokens": 63741,
+    "cost_usd": 0.006519,
+    "cost_parts_usd": {
+      "input": 0.000164,
+      "cached_input": 0.00036,
+      "cache_write": 0.002352,
+      "output": 0.003644
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:08:46.371+00:00",
+    "run_id": "aa3f6a5ba44c",
+    "kind": "ticket",
+    "ticket_id": 902,
+    "outcome": "waiting",
+    "token_limit": 120000,
+    "requests": 9,
+    "input_tokens": 36528,
+    "cached_input_tokens": 33632,
+    "output_tokens": 2211,
+    "total_tokens": 38739,
+    "cost_usd": 0.001775,
+    "cost_parts_usd": {
+      "input": 0.000113,
+      "cached_input": 0.000336,
+      "cache_write": 0.00022,
+      "output": 0.001105
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:14:48.480+00:00",
+    "run_id": "8744462bb28c",
+    "kind": "ticket",
+    "ticket_id": 101,
+    "outcome": "needs_approval",
+    "token_limit": 120000,
+    "requests": 12,
+    "input_tokens": 52858,
+    "cached_input_tokens": 32484,
+    "output_tokens": 6354,
+    "total_tokens": 59212,
+    "cost_usd": 0.006011,
+    "cost_parts_usd": {
+      "input": 0.000151,
+      "cached_input": 0.000325,
+      "cache_write": 0.002358,
+      "output": 0.003177
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:15:57.502+00:00",
+    "run_id": "b2ab172f6011",
+    "kind": "ticket",
+    "ticket_id": 102,
+    "outcome": "needs_approval",
+    "token_limit": 120000,
+    "requests": 12,
+    "input_tokens": 49122,
+    "cached_input_tokens": 41852,
+    "output_tokens": 2789,
+    "total_tokens": 51911,
+    "cost_usd": 0.002684,
+    "cost_parts_usd": {
+      "input": 0.000151,
+      "cached_input": 0.000419,
+      "cache_write": 0.00072,
+      "output": 0.001394
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:18:18.677+00:00",
+    "run_id": "6b61cd8879b5",
+    "kind": "ticket",
+    "ticket_id": 103,
+    "outcome": "needs_approval",
+    "token_limit": 120000,
+    "requests": 13,
+    "input_tokens": 56852,
+    "cached_input_tokens": 50489,
+    "output_tokens": 11993,
+    "total_tokens": 68845,
+    "cost_usd": 0.007256,
+    "cost_parts_usd": {
+      "input": 0.000164,
+      "cached_input": 0.000505,
+      "cache_write": 0.000591,
+      "output": 0.005997
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:38:37.602+00:00",
+    "run_id": "learn-616919f5",
+    "kind": "learning",
+    "ticket_id": null,
+    "outcome": "debrief",
+    "token_limit": 60000,
+    "requests": 1,
+    "input_tokens": 4063,
+    "cached_input_tokens": 0,
+    "output_tokens": 3942,
+    "total_tokens": 8005,
+    "cost_usd": 0.002476,
+    "cost_parts_usd": {
+      "input": 1.3e-05,
+      "cached_input": 0.0,
+      "cache_write": 0.000492,
+      "output": 0.001971
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:50:13.473+00:00",
+    "run_id": "0bb92e939b8f",
+    "kind": "ticket",
+    "ticket_id": 102,
+    "outcome": "blocked",
+    "token_limit": 120000,
+    "requests": 10,
+    "input_tokens": 41775,
+    "cached_input_tokens": 24215,
+    "output_tokens": 2640,
+    "total_tokens": 44415,
+    "cost_usd": 0.003726,
+    "cost_parts_usd": {
+      "input": 0.000126,
+      "cached_input": 0.000242,
+      "cache_write": 0.002037,
+      "output": 0.00132
+    },
+    "model": "gpt-6-luna"
+  },
+  {
+    "at_utc": "2026-11-07T15:50:54.297+00:00",
+    "run_id": "learn-845f58ad",
+    "kind": "learning",
+    "ticket_id": null,
+    "outcome": "debrief",
+    "token_limit": 60000,
+    "requests": 1,
+    "input_tokens": 4541,
+    "cached_input_tokens": 0,
+    "output_tokens": 3521,
+    "total_tokens": 8062,
+    "cost_usd": 0.002325,
+    "cost_parts_usd": {
+      "input": 1.3e-05,
+      "cached_input": 0.0,
+      "cache_write": 0.000552,
+      "output": 0.00176
+    },
+    "model": "gpt-6-luna"
+  }
+]
